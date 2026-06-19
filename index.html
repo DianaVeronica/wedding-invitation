@@ -11,7 +11,7 @@
     <style>
         :root {
             --green-envelope: #2F4F3B;
-            --green-envelope-inside: #223b2c; /* Verde mai închis pentru interiorul plicului */
+            --green-envelope-inside: #223b2c;
             --gold: #D4AF37;
             --gold-dark: #aa8529;
         }
@@ -38,7 +38,6 @@
             transform: translateY(-8vh);
         }
 
-        /* Spatele plicului (rămâne mereu dedesubt) */
         .envelope-back {
             position: absolute;
             width: 90%;
@@ -51,7 +50,6 @@
             z-index: 0;
         }
 
-        /* Containerul pentru invitație */
         .invitation-card {
             position: absolute;
             width: 90%;
@@ -61,7 +59,7 @@
             background: white;
             border-radius: 5px;
             overflow: hidden;
-            z-index: 1; /* Stă inițial ÎN plic (între spate și față) */
+            z-index: 1;
         }
 
         .invitation-card img {
@@ -70,7 +68,6 @@
             object-fit: contain;
         }
 
-        /* Coperta verde a plicului (fața) */
         .envelope-wrapper {
             position: absolute;
             width: 90%;
@@ -78,7 +75,7 @@
             left: 5%;
             top: 5%;
             z-index: 10;
-            pointer-events: none; /* Lăsăm click-urile să treacă, excepție făcând sigiliul */
+            pointer-events: none;
         }
 
         .flap-left {
@@ -96,7 +93,7 @@
 
         .strings-container {
             position: absolute;
-            top: calc(50% - 20px); /* Modificat pentru centrare verticală perfectă */
+            top: calc(50% - 20px);
             left: 0;
             width: 100%;
             height: 40px;
@@ -116,8 +113,8 @@
 
         .seal {
             position: absolute;
-            top: 50%; /* Modificat: centrat vertical */
-            left: 50%; /* Modificat: centrat orizontal */
+            top: 50%;
+            left: 50%;
             transform: translate(-50%, -50%);
             width: 80px;
             height: 80px;
@@ -149,7 +146,6 @@
             transition: opacity 0.5s ease;
         }
 
-        /* Floricelele minimaliste */
         .mini-flower {
             position: absolute;
             top: 50%;
@@ -160,10 +156,6 @@
             pointer-events: none;
             box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         }
-
-        /* =========================================
-           STĂRI DE ANIMAȚIE
-           ========================================= */
 
         .is-opening .seal {
             transform: translate(-50%, -50%) scale(1.5);
@@ -178,7 +170,6 @@
         }
 
         .is-opening .flap-left {
-            /* Plicul SE DESCHIDE, nu dispare */
             transform: rotateY(-160deg);
             box-shadow: -5px 0 15px rgba(0,0,0,0.2);
         }
@@ -192,8 +183,6 @@
             opacity: 0;
         }
 
-        /* Keyframes: Scoatem cardul pe jumătate, schimbăm nivelul (z-index), revenim deasupra */
-        /* Keyframes modificate pentru o distanță mai scurtă */
         @keyframes slideOutAndCenter {
             0% {
                 transform: translateX(0) scale(1);
@@ -201,13 +190,11 @@
                 box-shadow: 0 0 0 transparent;
             }
             40% {
-                /* Iese mai puțin în dreapta (45% în loc de 65%) */
                 transform: translateX(45%) scale(1);
                 z-index: 1;
                 box-shadow: -10px 5px 20px rgba(0,0,0,0.2);
             }
             45% {
-                /* Același 45% și la momentul în care trece peste plic */
                 transform: translateX(45%) scale(1);
                 z-index: 20;
             }
